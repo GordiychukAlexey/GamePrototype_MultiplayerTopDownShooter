@@ -1,0 +1,23 @@
+component EnemyCharacter {
+}
+
+component EnemyHealth {
+    [ExcludeFromPrototype] FP CurrentHealth;
+    [ExcludeFromPrototype] dictionary<EntityRef, FP> TakenDamage;
+    AssetRef<EnemyHealthConfig> EnemyHealthConfig;
+    
+}
+
+abstract event EnemyEvent {
+	EntityRef Enemy; 	
+}
+
+event OnEnemyCreated : EnemyEvent {}
+
+synced event OnEnemyDeath : EnemyEvent {
+	EntityRef Killer; 	
+}
+
+signal OnSpawnEnemy(EntityRef entityRef);
+signal OnEnemyDeath(EntityRef enemy, EntityRef killer);
+signal OnEnemyHit(EntityRef enemy, EntityRef source, FP damage);

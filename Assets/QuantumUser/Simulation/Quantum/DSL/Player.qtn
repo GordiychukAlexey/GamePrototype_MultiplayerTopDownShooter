@@ -1,0 +1,29 @@
+component PlayerLink {
+   [ExcludeFromPrototype] PlayerRef PlayerRef;
+}
+
+component PlayerCharacter {
+}
+
+component PlayerCharacterMovement {
+    [ExcludeFromPrototype] FP MovingSpeed;
+	AssetRef<PlayerCharacterMovementConfig> MovementConfig;
+}
+
+component PlayerCharacterTargets {
+    [ExcludeFromPrototype] dictionary<EntityRef, FP>ClosestEnemies;
+    AssetRef<PlayerCharacterTargetsConfig> TargetsConfig;
+}
+
+component PlayerCharacterAttack {
+    [ExcludeFromPrototype] FP AttackRadius;
+    [ExcludeFromPrototype] FP DamagePerSecond;
+	AssetRef<PlayerCharacterAttackConfig> AttackConfig;
+}
+
+component PlayerCharacterScore {
+	[ExcludeFromPrototype] Int32 Kills;
+}
+
+signal OnSpawnPlayerCharacter(EntityRef entityRef);
+
